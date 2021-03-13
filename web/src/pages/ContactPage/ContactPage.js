@@ -7,7 +7,9 @@ import {
   Label,
   FormError,
 } from '@redwoodjs/forms'
-import { Flash, useFlash, useMutation } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+
+import { toast, Toaster } from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 
 import BlogLayout from 'src/layouts/BlogLayout'
@@ -23,11 +25,10 @@ const CREATE_CONTACT = gql`
 const ContactPage = () => {
   const formMethods = useForm({ mode: 'onBlur' })
 
-  const { addMessage } = useFlash()
-
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
-      addMessage('Thank you for your submission!', {
+      toast('Thank you for your submission!', {
+        duration: 2000,
         style: { backgroundColor: 'green', color: 'white', padding: '1rem' },
       })
       formMethods.reset()
@@ -41,8 +42,7 @@ const ContactPage = () => {
   }
   return (
     <BlogLayout>
-      <Flash timeout={2000} />
-
+      <Toaster />
       <Form
         onSubmit={onSubmit}
         validation={{ mode: 'onBlur' }}
