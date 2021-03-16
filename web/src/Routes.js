@@ -10,7 +10,6 @@
 import { Router, Route, Private } from '@redwoodjs/router'
 
 const Routes = () => {
-  console.log('routes')
   return (
     <Router>
       <Route path="/contact" page={ContactPage} name="contact" />
