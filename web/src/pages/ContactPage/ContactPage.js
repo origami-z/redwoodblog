@@ -8,8 +8,8 @@ import {
   FormError,
 } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
+import { toast, Toaster } from '@redwoodjs/web/toast'
 
-import { toast, Toaster } from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 
 import BlogLayout from 'src/layouts/BlogLayout'
